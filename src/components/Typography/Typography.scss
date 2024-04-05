@@ -4,4 +4,22 @@
 .typography {
   display: flex;
   flex-direction: column;
+
+  &__heading {
+    @include rubik();
+    color: $content-color;
+    margin: 12px 0;
+
+    &--h1 {
+      @include rubik(28px, 500, normal, normal, 0px, 17px);
+    }
+  }
+
+  &__subheading {
+    max-width: 232px;
+    color: $content-color;
+    @include rubik(18px, $line-height: 24px);
+    opacity: 0.6;
+    margin: 6px 0;
+  }
 }

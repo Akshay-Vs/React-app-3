@@ -1,28 +1,17 @@
-import Button from "./components/Button/Button";
-import Typography from "./components/Typography/Typography";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AuthPage from "./pages/AuthPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 const App = () => {
   return (
-    <div>
-      <Button clickAction={() => alert("Hello")}>
-        <Button.Text>Click Me</Button.Text>
-      </Button>
-
-      <Button clickAction={() => alert("Hello")} variant="secondary">
-        <Button.Text>Click Me</Button.Text>
-      </Button>
-
-      <Button clickAction={() => alert("Hello")} variant="disabled">
-        <Button.Text>Click Me</Button.Text>
-      </Button>
-
-      <Typography>
-        <Typography.Heading variant="h1">Welcome to PopX</Typography.Heading>
-        <Typography.SubHeading>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        </Typography.SubHeading>
-      </Typography>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

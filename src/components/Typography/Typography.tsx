@@ -28,7 +28,7 @@ const Heading = ({ variant, style, children }: ITypographyHeading) => {
 };
 
 const SubHeading = ({ children }: IChildren) => {
-  return <div className="sub-heading">{children}</div>;
+  return <div className="typography__subheading">{children}</div>;
 };
 
 // Attach Heading and SubHeading components
