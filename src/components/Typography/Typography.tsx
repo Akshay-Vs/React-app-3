@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import PropTypes from "prop-types";
 import "./Typography.scss";
 
@@ -6,15 +6,22 @@ import "./Typography.scss";
 interface IChildren {
   children: ReactNode | JSX.Element;
 }
-
-interface ITypographyHeading extends IChildren {
-  variant?: "h1" | "h2" | "h3";
+interface IExtandableProps extends IChildren {
+  props?: React.HTMLAttributes<HTMLDivElement>;
   style?: string;
 }
+interface ITypographyHeading extends IExtandableProps {
+  variant?: "h1" | "h2" | "h3";
+}
+
 //#endregion
 
-const Typography = ({ children }: IChildren) => {
-  return <div className="typography">{children}</div>;
+const Typography = ({ children, props, style }: IExtandableProps) => {
+  return (
+    <div className={`typography ${style}`} {...props}>
+      {children}
+    </div>
+  );
 };
 
 const Heading = ({ variant, style, children }: ITypographyHeading) => {
@@ -27,14 +34,27 @@ const Heading = ({ variant, style, children }: ITypographyHeading) => {
   );
 };
 
-const SubHeading = ({ children }: IChildren) => {
-  return <div className="typography__subheading">{children}</div>;
+const SubHeading = ({ children, props, style }: IExtandableProps) => {
+  return (
+    <div className={`typography__subheading ${style}`} {...props}>
+      {children}
+    </div>
+  );
+};
+
+const Paragraph = ({ children, props, style }: IExtandableProps) => {
+  return (
+    <div className={`typography__paragraph ${style}`} {...props}>
+      {children}
+    </div>
+  );
 };
 
 // Attach Heading and SubHeading components
 // to the Typography object for compound export
 Typography.Heading = Heading;
 Typography.SubHeading = SubHeading;
+Typography.Paragraph = Paragraph;
 
 // RunTime Typechecking using PropTypes
 Typography.propTypes = {

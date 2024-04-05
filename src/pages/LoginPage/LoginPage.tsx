@@ -2,34 +2,52 @@ import { useState } from "react";
 import TakeInput from "../../components/Input/Input";
 import Typography from "../../components/Typography";
 import Button from "../../components/Button";
-
-type Credentials = {
-  username?: string | undefined;
-  password?: string | undefined;
-};
+import { loginSchema } from "../../validation/loginValidation";
 
 const LoginPage = () => {
-  const [credentials, setCredentials] = useState<Credentials>();
-  //   const [error, setError] = useState<string>();
+  // This component represents a login form with validation
+  // It sets local storage after successful login
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState();
   const [buttonState, setButtonState] = useState<
-    "disabled" | "enabled" | "loading"
+    "enabled" | "disabled" | "loading"
   >("disabled");
 
-  const handlecredentialsChange = (
+  const handleCredentialsChange = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setCredentials({ ...credentials, [event.target.name]: event.target.value });
-    console.log(credentials);
-    if (credentials?.password) setButtonState("enabled");
-  };
+    const { name, value } = event.target;
+    setCredentials((prevCredentials) => ({
+      ...prevCredentials,
+      [name]: value,
+    }));
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    try {
+      await loginSchema.validate(credentials, { abortEarly: false });
+      setError(undefined);
+      setButtonState("enabled");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      setError(error.errors[0]);
+      setButtonState("disabled");
+    }
+  };
+  const handleCredentialsSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (buttonState === "enabled") {
+      setButtonState("loading");
+      localStorage.setItem("isAuthenticated", "true");
+      location.href = "/";
+    }
   };
 
   return (
-    <main className="flex flex-col items-center justify-start h-screen w-screen pt-12">
-      <form className="flex flex-col">
+    <main className="flex flex-col items-center justify-start h-screen w-screen pt-16">
+      <div className="flex flex-col">
         <Typography>
           <Typography.Heading variant="h1">Welcome to PopX</Typography.Heading>
           <Typography.SubHeading>
@@ -37,41 +55,69 @@ const LoginPage = () => {
           </Typography.SubHeading>
         </Typography>
 
-        <TakeInput>
-          <TakeInput.TextInput
-            props={{
-              placeholder: "Enter Email Address",
-              type: "email",
-              autoComplete: "email",
-              autoFocus: true,
-              required: true,
-              onChange: handlecredentialsChange,
-              value: credentials?.username,
-            }}
-          >
-            Email Address
-          </TakeInput.TextInput>
-        </TakeInput>
+        <form className="mt-5" onSubmit={handleCredentialsSubmit}>
+          <TakeInput>
+            <TakeInput.TextInput
+              props={{
+                placeholder: "Enter Email Address",
+                type: "email",
+                autoComplete: "email",
+                autoFocus: true,
+                required: true,
+                onChange: handleCredentialsChange,
+                value: credentials?.email,
+                name: "email",
+              }}
+            >
+              Email Address
+            </TakeInput.TextInput>
+          </TakeInput>
 
-        <TakeInput>
-          <TakeInput.TextInput
-            props={{
-              placeholder: "Enter Password",
-              type: "password",
-              autoComplete: "current-password",
-              required: true,
-              onChange: handlecredentialsChange,
-              value: credentials?.password,
-            }}
-          >
-            Password
-          </TakeInput.TextInput>
-        </TakeInput>
+          <TakeInput>
+            <TakeInput.TextInput
+              props={{
+                placeholder: "Enter Password",
+                type: "password",
+                autoComplete: "current-password",
+                required: true,
+                onChange: handleCredentialsChange,
+                value: credentials?.password,
+                name: "password",
+              }}
+            >
+              Password
+            </TakeInput.TextInput>
+          </TakeInput>
 
-        <Button variant={buttonState === "disabled" ? "disabled" : "primary"}>
-          <Button.Text>Login</Button.Text>
-        </Button>
-      </form>
+          {error && (
+            <div className="w-80 mb-5 px-1 text-red-500">
+              <Typography.Paragraph>{error}</Typography.Paragraph>
+            </div>
+          )}
+
+          <Button
+            props={{
+              type: "submit",
+            }}
+            variant={buttonState === "disabled" ? "disabled" : "primary"}
+          >
+            <Button.Text>
+              {buttonState === "loading" ? "Please wait..." : "Login"}
+            </Button.Text>
+          </Button>
+
+          <Typography>
+            <a
+              className="w-full items-end justify-end flex mt-2 text-blue-500"
+              href="/register"
+            >
+              <Typography.Paragraph style="text-sm">
+                Create an account
+              </Typography.Paragraph>
+            </a>
+          </Typography>
+        </form>
+      </div>
     </main>
   );
 };

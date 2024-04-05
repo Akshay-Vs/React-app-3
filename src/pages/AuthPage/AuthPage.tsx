@@ -2,8 +2,8 @@ import Button from "../../components/Button";
 import Typography from "../../components/Typography";
 
 const AuthPage = () => {
-  const createAccountAction = () => (location.href = "/login");
-  const registerAccountAction = () => (location.href = "/register");
+  const createAccountAction = () => (location.href = "/register");
+  const registerAccountAction = () => (location.href = "/login");
 
   return (
     <main className="h-screen flex justify-end items-center flex-col sm:justify-center">

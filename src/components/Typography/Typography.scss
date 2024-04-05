@@ -12,6 +12,7 @@
 
     &--h1 {
       @include rubik(28px, 500, normal, normal, 0px, 17px);
+      line-height: 36px;
     }
   }
 
@@ -20,6 +21,11 @@
     color: $content-color;
     @include rubik(18px, $line-height: 24px);
     opacity: 0.6;
+    margin: 6px 0;
+  }
+
+  &__paragraph {
+    @include rubik(18px, $line-height: 24px);
     margin: 6px 0;
   }
 }

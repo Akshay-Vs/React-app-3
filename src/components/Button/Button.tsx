@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from "react";
+import React, { MouseEventHandler, ReactNode } from "react";
 import PropTypes from "prop-types";
 import "./Button.scss";
 
@@ -9,8 +9,9 @@ interface IButtonChildren {
 
 interface IButtonProps extends IButtonChildren {
   variant?: "primary" | "secondary" | "disabled";
-  clickAction?: MouseEventHandler<HTMLDivElement>;
+  clickAction?: MouseEventHandler<HTMLButtonElement>;
   style?: string;
+  props?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 //#endregion
 
@@ -21,7 +22,7 @@ const Button = ({
   children,
 }: IButtonProps) => {
   return (
-    <div
+    <button
       onClick={clickAction}
       className={`button button--${variant} ${style}}`}
       tabIndex={0}
@@ -29,7 +30,7 @@ const Button = ({
       aria-label="Button"
     >
       {children}
-    </div>
+    </button>
   );
 };
 

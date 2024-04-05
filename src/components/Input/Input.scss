@@ -12,8 +12,8 @@
     margin: 12px 0;
 
     &__input {
-      width: 350px;
-      height: 60px;
+      width: 335px;
+      height: 52px;
       border-radius: 6px;
       font-size: 18px;
       padding: 0 15px;
@@ -49,6 +49,23 @@
       color: $primary-color;
       background: $bg-color;
       opacity: 1;
+    }
+  }
+
+  &__radio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin: 6px 0;
+
+    &:checked {
+      border-color: $primary-color;
+    }
+
+    &__label {
+      @include rubik($font-weight: 400, $font-size: 14px);
+      color: $content-color;
     }
   }
 }
