@@ -10,18 +10,20 @@ interface IButtonChildren {
 interface IButtonProps extends IButtonChildren {
   variant?: "primary" | "secondary" | "disabled";
   clickAction?: MouseEventHandler<HTMLDivElement>;
+  style?: string;
 }
 //#endregion
 
 const Button = ({
   variant = "primary",
   clickAction,
+  style,
   children,
 }: IButtonProps) => {
   return (
     <div
       onClick={clickAction}
-      className={`button button--${variant}`}
+      className={`button button--${variant} ${style}}`}
       tabIndex={0}
       role="button"
       aria-label="Button"

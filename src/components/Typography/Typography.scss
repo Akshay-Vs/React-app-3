@@ -1,3 +1,7 @@
-.Typography {
-  
+@import "../../styles/typography.scss";
+@import "../../styles/themeColors.scss";
+
+.typography {
+  display: flex;
+  flex-direction: column;
 }
