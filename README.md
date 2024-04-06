@@ -1,30 +1,32 @@
-# React + TypeScript + Vite
+# Educase Machine Test
+<a src="https://www.youtube.com/watch?v=C028Hn2CjSA&ab_channel=AkshayVs"><img src="https://ik.imagekit.io/geeekg65rf/Screenshot%20from%202024-04-06%2013-48-07.png?updatedAt=1712393120861"></a>
+## Technologies Used:
+- Vite
+- Yup
+- Tailwind CSS
+- Sass
+- TypeScript
+- SOLID principles
+- LocalStorage
+- Responsive design
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Installation:
+1. Clone the repository: `git clone https://github.com/Akshay-Vs/Educase-MachineTest.git`
+2. Install dependencies: `npm install`
 
-Currently, two official plugins are available:
+## Usage:
+1. Start the development server: `npm run dev`
+2. Open your browser and navigate to the provided localhost URL.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features:
+- High performance bundling with Vite.
+- Form validation using Yup.
+- Modern styling with Tailwind CSS and Sass.
+- Type safety and enhanced development experience with TypeScript.
+- Code maintainability following SOLID principles.
+- Efficient storage of local items using LocalStorage.
+- Responsive design for optimal user experience across devices.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Demo:
+- [Live Demo](https://educase-machine-test.vercel.app/)
+- [Demo Video](https://www.youtube.com/watch?v=C028Hn2CjSA&ab_channel=AkshayVs)
