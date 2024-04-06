@@ -9,4 +9,9 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: $bg-color;
+  overflow-x: hidden;
+
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
 }

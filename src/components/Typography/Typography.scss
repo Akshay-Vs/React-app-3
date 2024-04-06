@@ -14,6 +14,24 @@
       @include rubik(28px, 500, normal, normal, 0px, 17px);
       line-height: 36px;
     }
+
+    &--h2 {
+      @include rubik(24px, 500, normal, normal, 0px, 17px);
+      @media screen and (max-width: 768px) {
+        font-size: 20px;
+      }
+      line-height: 20px;
+    }
+
+    &--h3 {
+      @include rubik(18px, 500, normal, normal, 0px, 17px);
+      line-height: 12px;
+    }
+
+    &--h4 {
+      @include rubik(16px, 400, normal, normal, 0px, 17px);
+      line-height: 6px;
+    }
   }
 
   &__subheading {

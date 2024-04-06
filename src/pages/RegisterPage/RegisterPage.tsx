@@ -6,16 +6,22 @@ import Button from "../../components/Button";
 import { registerSchema } from "../../validation/registerValidation";
 
 interface credentials {
-  fullName?: string;
-  email?: string;
-  password?: string;
-  phoneNumber?: string;
-  companyName?: string;
+  fullName: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  companyName: string;
   [key: string]: string | undefined;
 }
 
 const RegisterPage = () => {
-  const [credentials, setCredentials] = useState<credentials>();
+  const [credentials, setCredentials] = useState<credentials>({
+    fullName: "",
+    email: "",
+    password: "",
+    phoneNumber: "",
+    companyName: "",
+  });
   const [error, setError] = useState();
   const [buttonState, setButtonState] = useState<
     "enabled" | "disabled" | "loading"
@@ -47,6 +53,10 @@ const RegisterPage = () => {
     if (buttonState === "enabled") {
       setButtonState("loading");
       localStorage.setItem("isAuthenticated", "true");
+      //! Store credentials in localStorage for testing purposes
+      localStorage.setItem("email", credentials.email);
+      localStorage.setItem("userName", credentials.fullName);
+      localStorage.setItem("companyName", credentials.companyName);
       location.href = "/";
     }
   };

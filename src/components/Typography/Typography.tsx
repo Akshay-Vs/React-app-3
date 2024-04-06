@@ -11,7 +11,7 @@ interface IExtandableProps extends IChildren {
   style?: string;
 }
 interface ITypographyHeading extends IExtandableProps {
-  variant?: "h1" | "h2" | "h3";
+  variant?: "h1" | "h2" | "h3" | "h4";
 }
 
 //#endregion
@@ -59,7 +59,7 @@ Typography.Paragraph = Paragraph;
 // RunTime Typechecking using PropTypes
 Typography.propTypes = {
   children: PropTypes.node.isRequired,
-  variant: PropTypes.oneOf(["h1", "h2", "h3"]),
+  variant: PropTypes.oneOf(["h1", "h2", "h3", "h4"]),
   style: PropTypes.string,
 };
 

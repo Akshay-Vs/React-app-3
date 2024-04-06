@@ -41,6 +41,7 @@ const LoginPage = () => {
     if (buttonState === "enabled") {
       setButtonState("loading");
       localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("email", credentials.email); //! Store credentials in localStorage for testing purposes
       location.href = "/";
     }
   };
