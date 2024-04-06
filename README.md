@@ -1,5 +1,5 @@
 # Educase Machine Test
-<a src="https://www.youtube.com/watch?v=C028Hn2CjSA&ab_channel=AkshayVs"><img src="https://ik.imagekit.io/geeekg65rf/Screenshot%20from%202024-04-06%2013-48-07.png?updatedAt=1712393120861"></a>
+<a src="https://www.youtube.com/watch?v=C028Hn2CjSA&ab_channel=AkshayVs"><img height="50%" width="50%" src="https://ik.imagekit.io/geeekg65rf/Screenshot%20from%202024-04-06%2013-48-07.png?updatedAt=1712393120861"></a>
 ## Technologies Used:
 - Vite
 - Yup
